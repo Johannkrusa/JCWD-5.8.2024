@@ -195,11 +195,11 @@ function findDuplicate(arr){
     for (var i = 0; i <= arr.length-1; i++){
         var count = 0;
         for(var j = 0; j<= arr.length-1; j++){
-            if (arr[i] == arr[j]){
+            if (i != j && arr[i] == arr[j]){
                     count++;
                 }
         }
-        if (count > 1){
+        if (count > 0){
             tempArr.push(arr[i]);
         }
     }
@@ -371,11 +371,11 @@ function sumOfDuplicates(arr){
     for (var i = 0; i <= arr.length-1; i++){
         var count = 0;
         for(var j = 0; j<= arr.length-1; j++){
-            if (arr[i] == arr[j]){
+            if (i != j && arr[i] == arr[j]){
                     count++;
                 }
         }
-        if (count > 1){
+        if (count > 0){
             tempArr.push(arr[i]);
         }
     }
