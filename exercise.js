@@ -222,7 +222,45 @@ function findDuplicate(arr){
 }
 var arr = [1, 2, 2, 2, 3, 3, 4, 5, 5]
 
+console.log("query 9")
 console.log(findDuplicate(arr))
+
+// second way
+
+function findDuplicate2(arr){
+    var tempArr = [];
+    // finding duplicate numnbers
+    for (var i = 0; i <= arr.length-1; i++){
+        var count = 0;
+        for(var j = 0; j<= arr.length-1; j++){
+            if (i != j && arr[i] == arr[j]){
+                    count++;
+                }
+        }
+        if (count > 0){
+            tempArr.push(arr[i]);
+        }
+    }
+
+    // only print out non duplicates
+    var resultArr = [];
+    for (var i = 0; i < tempArr.length; i++) {
+        if (resultArr.indexOf(tempArr[i]) === -1) {
+            for (var j = i + 1; j < tempArr.length; j++) {
+                if (tempArr[i] === tempArr[j])
+                {
+                    resultArr.push(tempArr[i]);
+                    break;
+                }
+            }
+        }
+    }
+    return resultArr;
+}
+var arr = [1, 2, 2, 2, 3, 3, 4, 5, 5]
+
+console.log("query 9")
+console.log(findDuplicate2(arr))
 
 // query 10
 // 5. Write a function to find the difference in 2 given array
@@ -312,6 +350,7 @@ function getPrimitiveData(arr) {
 
 var arr = [1, [], undefined, {}, "string", {}, []];
 
+console.log(typeof(null));
 console.log(getPrimitiveData(arr));
 
 // query 12
@@ -333,7 +372,7 @@ function secondSmallest(numbers) {
             smallest = numbers[i];
         } else if (numbers[i] < secondSmallest && numbers[i] !== smallest) {
             secondSmallest = numbers[i];
-        }
+        } 
     }
 
     return secondSmallest;
@@ -431,4 +470,38 @@ function rockPaperScissors(){
     }
 }
 
+playerChoice = 'rock';
+
 console.log(rockPaperScissors());
+function rockPaperScissors2() {
+    const gameMatrix = [
+        [0, -1, 1], 
+        [1, 0, -1],  
+        [-1, 1, 0]   
+    ];
+
+    var playerNum = Math.floor(Math.random() * 3);
+    var enemyNum = Math.floor(Math.random() * 3);
+    
+    var result = gameMatrix[playerNum][enemyNum];
+    
+    if (result === 1) {
+        return "Player wins! Player chose: " + choiceToString(playerNum) + ", Enemy chose: " + choiceToString(enemyNum);
+    } else if (result === -1) {
+        return "Enemy wins! Player chose: " + choiceToString(playerNum) + ", Enemy chose: " + choiceToString(enemyNum);
+    } else {
+        return "It's a tie! Player and Enemy both chose: " + choiceToString(playerNum);
+    }
+}
+
+function choiceToString(choice) {
+    if (choice === 0) {
+        return "Rock";
+    } else if (choice === 1) {
+        return "Paper";
+    } else {
+        return "Scissors";
+    }
+}
+
+console.log(rockPaperScissors2());
