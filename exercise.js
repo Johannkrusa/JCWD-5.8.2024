@@ -270,6 +270,30 @@ var arr2 = [3,4,5,6,7];
 
 console.log(arrayDifference(arr1, arr2));
 
+// second way
+function arrayDifference2(arr1, arr2){
+    var tempArr = [];
+    var combinedArray = arr1.concat(arr2);
+    for(var i = 0; i <= combineArray.length -1; i++){
+        var counter = 0;
+        for (var j = i+1; j <= combineArray.length -1; j++){
+            if (i != j || combineArray[i] == combineArray[j]){
+                counter++;
+            }
+        }
+        if (counter != 0){
+            tempArr.push(combineArray[i])
+        }
+    }
+    return tempArr;
+}
+
+var arr1 = [1,2,3,4,5];
+var arr2 = [3,4,5,6,7]
+
+console.log("cat");
+console.log(arrayDifference(arr1, arr2));
+
 // query 11
 // 1. Based on the array below write a function that will return primitive data types only. let
 // arr = [1, [], undefined, {}, "string", {}, []];
@@ -362,7 +386,7 @@ function sumOfDuplicates(arr){
     return result;
 }
 
-arr = [10, 20, 40, 10, 50, 30, 10, 60, 10];
+arr = [ 10, 20, 40, 10, 50, 30, 10, 60, 10];
 console.log(sumOfDuplicates(arr));
 
 // query 15
