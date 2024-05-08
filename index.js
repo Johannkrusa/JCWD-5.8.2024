@@ -301,9 +301,14 @@ jobClass.getWeapon();
 
 // setter and getter;
 
+// encapsulation
+// bundle data with methods acting upon those data in one unit 
+// method will act as if they're an attribute 
+// hides the data by privating datas
 class Pokemon {
     name = "";
     typing = "";
+    #pokemon_id = "";
 
     // makes it a property instead of a method
     set setName(name){
@@ -316,6 +321,10 @@ class Pokemon {
             return;
         }
         this.name = name;
+
+        for (var i = 0; i < name.length; i++){
+                this.#pokemon_id += name.charCodeAt(i);
+        }
     }
     get getName(){
         return this.name;
@@ -326,6 +335,9 @@ class Pokemon {
     }
     get getTyping(){
        return this.typing;
+    }
+    get getPokemonID(){
+        return this.#pokemon_id;
     }
 }
 
@@ -341,3 +353,48 @@ let charmander = new Pokemon();
 
 charmander.setName = "Charmander";
 console.log(charmander.getName);
+console.log(charmander.getPokemonID);
+
+
+// inheritance 
+// children of a parent will get the datas from parents;
+// will get other said property from said parents; 
+// remove redundancy 
+
+
+class Organism {
+    name = "";
+    blood = true;
+    constructor(name, blood){
+        this.name = name;
+        this.blood = blood;
+    }
+    move(){
+        console.log("moving")
+    }
+}
+
+class Human extends Organism{
+    bone = true;
+    constructor(name, blood){
+        super(name, blood);
+    }
+}
+
+class Animal extends Organism{
+    constructor(){
+        super();
+    }
+}
+
+let Jonah = new Human ("Jonah", true);
+
+console.log(Jonah);
+
+// instanceof, to check whether an object whether theyre from a certain class
+
+console.log(Jonah instanceof Human);
+console.log(Jonah instanceof Organism);
+console.log(Jonah instanceof Animal);
+
+// super is to call the constructor of a parent;
